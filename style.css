@@ -20,6 +20,7 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
+    width: 100%;
 }
 
 /* Background Blobs */
@@ -90,22 +91,24 @@ nav {
     width: 90%;
     max-width: 1200px;
     z-index: 1000;
-    padding: 12px 30px;
+    padding: 12px 25px;
 }
 
 .nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: -0.5px;
+    flex-shrink: 0;
 }
 
 .app-logo {
@@ -122,11 +125,13 @@ nav {
     background: var(--primary);
     color: #000;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-primary:hover {
@@ -419,8 +424,20 @@ footer {
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    .hero-btns { flex-direction: column; }
-    nav { padding: 10px 20px; }
-    .about-profile, .legal-card { padding: 30px; }
+    h1 { font-size: 2.2rem; letter-spacing: -1px; }
+    .hero-btns { flex-direction: column; gap: 12px; }
+    nav { 
+        width: 95%; 
+        padding: 10px 15px; 
+        top: 10px;
+    }
+    .logo { font-size: 1rem; }
+    .btn-primary { padding: 8px 14px; font-size: 0.8rem; }
+    .about-profile, .legal-card { padding: 25px; }
+    .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 400px) {
+    .logo .thin { display: none; } /* Ocultar VPN en móviles muy pequeños */
+    .status-tag { font-size: 0.7rem; }
 }
