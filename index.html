@@ -8,13 +8,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Corrección de emergencia para el logo */
+        /* Corrección definitiva para el logo */
         .app-logo {
             width: 40px !important;
             height: 40px !important;
             min-width: 40px !important;
+            max-width: 40px !important;
             border-radius: 10px;
             object-fit: contain;
+            display: block;
+        }
+        .legal-content h3 {
+            color: var(--primary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .legal-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--text-dim);
+        }
+        .important-badge {
+            background: rgba(255, 61, 0, 0.1);
+            color: #FF3D00;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 61, 0, 0.2);
         }
     </style>
 </head>
@@ -100,21 +124,22 @@
 
         <section class="legal" id="legal">
             <div class="glass-card legal-card">
-                <h2>Terms & Conditions</h2>
+                <span class="important-badge">Aviso importante</span>
                 <div class="legal-content">
-                    <p>By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy, or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages, or make derivative versions. The app itself, and all the trade marks, copyright, database rights and other intellectual property rights related to it, still belong to Thomasculturavpn.</p>
+                    <h3>Uso responsable</h3>
+                    <p>El uso excesivo de HerbieNet VPN puede provocar el baneo o la suspensión de tu linea por parte de tu operadora. Úsala con moderación.</p>
                     
-                    <p>Thomasculturavpn is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. We will never charge you for the app or its services without making it very clear to you exactly what you’re paying for.</p>
+                    <h3>Responsabilidad del usuario</h3>
+                    <p>El usuario es el único responsable del uso que de a esta aplicación. HerbieNet VPN no se hace responsable por violaciones a los términos de servicio de tu operadora.</p>
                     
-                    <p>The HTTP CulturaVPN app stores and processes personal data that you have provided to us, in order to provide my Service. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the HTTP CulturaVPN app won’t work properly or at all.</p>
+                    <h3>Privacidad</h3>
+                    <p>HerbieNet VPN no almacena ni registra tu historial de navegación. Sin embargo, el servidor VPN al que te conectes puede tener sus propias politicas.</p>
                     
-                    <p>You should be aware that there are certain things that Thomasculturavpn will not take responsibility for. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi, or provided by your mobile network provider, but Thomasculturavpn cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.</p>
+                    <h3>Legalidad</h3>
+                    <p>El uso de VPN puede estar restringido en algunos paises. Verifica la legislación vigente de tu pais antes de usar esta aplicación.</p>
                     
-                    <p>If you’re using the app outside of an area with Wi-Fi, you should remember that your terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.</p>
-                    
-                    <p>Along the same lines, Thomasculturavpn cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, Thomasculturavpn cannot accept responsibility.</p>
-                    
-                    <p>With respect to Thomasculturavpn’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavour to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. Thomasculturavpn accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app.</p>
+                    <h3>Estabilidad del servicio</h3>
+                    <p>Esta es una aplicación en desarrollo. Los servidores pueden presenter Interrupciones. No se garantiza disponibilidad 100% del tiempo.</p>
                 </div>
             </div>
         </section>
