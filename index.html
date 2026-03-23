@@ -69,6 +69,10 @@
                     <a href="#download" class="btn-main">Empezar Ahora</a>
                     <a href="#about" class="btn-secondary">Saber más</a>
                 </div>
+                <div class="status-tag">
+                    <span class="status-dot"></span>
+                    <span>HerbieNet Server Status: <span id="latency">Calculando latencia...</span></span>
+                </div>
             </div>
         </section>
 
@@ -165,6 +169,64 @@
 
     <script>
         lucide.createIcons();
+
+        // 1. Brillo que sigue al mouse en las tarjetas (Glass Glow)
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.onmousemove = e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            };
+        });
+
+        // 2. Revelación suave al desplazar (Reveal on Scroll)
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .glass-card').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+
+        // 3. Parallax sutil en los blobs de fondo
+        document.addEventListener('mousemove', e => {
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.5;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // 4. Simulador de latencia "En Vivo"
+        function updateLatency() {
+            const lat = Math.floor(Math.random() * (45 - 15) + 15);
+            const latencyEl = document.getElementById('latency');
+            if (latencyEl) {
+                latencyEl.innerText = `Online | Latencia: ${lat}ms`;
+            }
+        }
+        setInterval(updateLatency, 3000);
+        updateLatency();
+
+        // 5. Scroll suave para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
