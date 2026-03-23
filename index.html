@@ -61,20 +61,20 @@
 
     <main>
         <section class="hero">
-            <div class="glass-card hero-content">
-                <span class="badge">Nueva Versión v1.6 Disponible</span>
-                <h1>Seguridad Total, <br><span class="gradient-text">Sin Límites.</span></h1>
-                <p>Navega de forma anónima, salta bloqueos de red y comparte internet de forma inteligente con la herramienta más estable del mercado.</p>
-                <div class="hero-btns">
-                    <a href="#download" class="btn-main">Empezar Ahora</a>
-                    <a href="#about" class="btn-secondary">Saber más</a>
-                </div>
-                <div class="status-tag">
-                    <span class="status-dot"></span>
-                    <span>HerbieNet Server Status: <span id="latency">Calculando latencia...</span></span>
-                </div>
-            </div>
-        </section>
+                    <div class="glass-card hero-content">
+                        <span class="badge" id="latest-version-badge">Buscando última versión...</span>
+                        <h1>Seguridad Total, <br><span class="gradient-text">Sin Límites.</span></h1>
+                        <p>Navega de forma anónima, salta bloqueos de red y comparte internet de forma inteligente con la herramienta más estable del mercado.</p>
+                        <div class="hero-btns">
+                            <a href="./descargas/" class="btn-main">Empezar Ahora</a>
+                            <a href="#about" class="btn-secondary">Saber más</a>
+                        </div>
+                        <div class="status-tag">
+                            <span class="status-dot"></span>
+                            <span>HerbieNet Server Status: <span id="latency">Calculando latencia...</span></span>
+                        </div>
+                    </div>
+                </section>
 
         <section class="features" id="features">
             <div class="glass-card feature-card">
@@ -218,15 +218,26 @@
         setInterval(updateLatency, 3000);
         updateLatency();
 
-        // 5. Scroll suave para enlaces de navegación
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // 6. Obtener última versión automáticamente desde GitHub
+        async function fetchLatestRelease() {
+            try {
+                // Reemplaza HerbieHg/hg-assets- por el nombre real de tu repo de activos si es otro
+                const response = await fetch('https://api.github.com/repos/HerbieHg/hg-assets-/releases/latest');
+                if (response.ok) {
+                    const data = await response.json();
+                    const version = data.tag_name;
+                    document.getElementById('latest-version-badge').innerText = `Nueva Versión ${version} Disponible`;
+                    const downloadText = document.querySelector('.download-card p');
+                    if (downloadText) downloadText.innerText = `Descarga HerbieNet VPN ${version} y experimenta la diferencia.`;
+                } else {
+                    document.getElementById('latest-version-badge').innerText = `Versión v1.6 Disponible`;
+                }
+            } catch (error) {
+                console.error('Error cargando versión:', error);
+                document.getElementById('latest-version-badge').innerText = `Versión v1.6 Disponible`;
+            }
+        }
+        fetchLatestRelease();
     </script>
 </body>
 </html>
