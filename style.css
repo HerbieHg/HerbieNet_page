@@ -226,7 +226,7 @@ h1 {
     transition: 0.3s;
 }
 
-.feature-card i {
+.feature-card .lucide {
     width: 50px;
     height: 50px;
     color: var(--primary);
@@ -262,7 +262,7 @@ h1 {
     font-size: 0.95rem;
 }
 
-.contact-item i {
+.contact-item .lucide {
     width: 20px;
     height: 20px;
     color: var(--primary);
@@ -279,7 +279,8 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-.social-links a i {
+
+.social-links a .lucide {
     width: 24px;
     height: 24px;
 }
