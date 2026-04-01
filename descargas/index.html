@@ -121,19 +121,21 @@
                         const version = release.tag_name;
                         const date = new Date(release.published_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
                         
-                        // Buscamos el primer archivo APK en los assets del Release
+                        // 1. Buscamos el archivo APK específico subido a este Release
                         const apkAsset = release.assets.find(asset => asset.name.endsWith('.apk'));
                         
-                        // Si es la última versión (index 0), forzamos la descarga del herbienet.apk directo
-                        // Si no hay asset, usamos el enlace directo del repo para evitar que salgan de la web
-                        let downloadUrl = apkAsset ? apkAsset.browser_download_url : 'https://github.com/HerbieHg/hg-assets-/raw/main/herbienet.apk';
-                        
-                        // Si es la última versión, aseguramos que baje el archivo principal actualizado
-                        if (index === 0) {
-                            downloadUrl = 'https://github.com/HerbieHg/hg-assets-/raw/main/herbienet.apk';
-                        }
+                        let downloadUrl = "";
+                        let size = "42.3 MB";
 
-                        const size = apkAsset ? (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB' : '42.3 MB';
+                        if (apkAsset) {
+                            // Si existe el archivo en el release, usamos su link de descarga directa
+                            downloadUrl = apkAsset.browser_download_url;
+                            size = (apkAsset.size / (1024 * 1024)).toFixed(1) + ' MB';
+                        } else {
+                            // Si no hay archivo en el release (versiones viejas), bajamos el archivo del repo
+                            // pero lo apuntamos al link RAW para que sea descarga directa y no redirija
+                            downloadUrl = `https://github.com/HerbieHg/hg-assets-/raw/main/herbienet.apk`;
+                        }
                         
                         const badge = index === 0 ? '<span class="v-badge">Última</span>' : '';
                         const btnStyle = index === 0 ? '' : 'style="background: rgba(255,255,255,0.1); color: #fff;"';
